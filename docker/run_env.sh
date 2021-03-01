@@ -15,6 +15,8 @@ else
 fi
 echo "----------------------------------"
 
+sleep 1
+
 # run new container
 echo "start ${PROJECT_NAME} env ..."
 docker run -it -d --rm --name ${PROJECT_NAME} \
