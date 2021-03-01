@@ -1,2 +1,2 @@
 *.log
-/credential
+/src/lib/credential.py
