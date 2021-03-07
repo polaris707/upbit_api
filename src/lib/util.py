@@ -6,6 +6,7 @@ import requests
 import jwt
 import uuid
 import hashlib
+import pprint
 
 from credential import *
 
@@ -34,10 +35,10 @@ def callAPI(method, url, **kwargs):
 
     try:
         r = requests.request(method, url, **kwargs)
-        ret = r if r.status_code == requests.codes.ok else None
-
+        r.raise_for_status()
+        ret = r
     except Exception as e:
-        logging.error(f"[callAPI] Exception - ({method}){url}", exc_info=True)
+        logging.error(f"[callAPI] Exception - ({method}){url}\n{kwargs}", exc_info=True)
 
     return ret
 
