@@ -45,5 +45,10 @@ def callAPI(method, url, **kwargs):
 def callUpbitAPI(method, path, timeout=REQUEST_TIMEOUT, **kwargs):
     return callAPI(method, f"{UPBIT_BASE_URL}{path}", timeout=timeout, **kwargs)
 
+def makeUpbitOrangeHeader(payload):
+    jwt_token = jwt.encode(payload, ORANGE_UPBIT_API_SECRET_KEY)
+    authorize_token = 'Bearer {}'.format(jwt_token)
+    return {"Authorization": authorize_token}
+
 if __name__ == "__main__" :
     None
